@@ -5,6 +5,7 @@ import {
   useSearchParams,
 } from "react-router-dom";
 import { LightThemeContants } from "../../constants/colors";
+import { filterParams } from "../../utils/filterParams";
 // import { ColorConstants } from "../../constants/website";
 
 export default function usePageRouter() {
@@ -24,20 +25,15 @@ export default function usePageRouter() {
     navigate(link);
   };
 
-  const navigateQuery = (obj?: any, check?: boolean) => {
-    Object.keys(obj).forEach((key) => {
-      if (obj[key] === "" || (!obj[key]?.length && key in query && !check)) {
-        delete obj[key];
-        delete query[key];
-      }
+  const navigateQuery = (obj: any) => {
+    const newQuery = filterParams({
+      page: query.page ?? null,
+      search: query.search ?? null,
+      ...obj,
     });
 
-    const newQuery = {
-      ...query,
-      ...obj,
-    };
-
     const queryParams = createSearchParams(newQuery);
+    
     navigate({
       pathname: location.pathname,
       search: queryParams.toString(),
@@ -50,7 +46,7 @@ export default function usePageRouter() {
 
   const checkPath = (path: string, status?: string) => {
     const result = path === location.pathname.substring(1);
-    
+
     if (status === "icon") {
       return result ? LightThemeContants.primary : LightThemeContants.gray;
     }

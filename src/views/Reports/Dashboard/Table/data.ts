@@ -30,9 +30,18 @@ export const columns: ColumnType[] = [
 
 export const data: DataType[] = [
   {
-    key: "1",
+    key: 1011,
     name: `Edward King`,
     age: 32,
     address: `London, Park Lane no`,
   },
 ];
+
+for (let i = 0; i < 100; i++) {
+  data.push({
+    key: i,
+    name: `Edward King`,
+    age: 3 + i,
+    address: `London, Park Lane no`,
+  });
+}

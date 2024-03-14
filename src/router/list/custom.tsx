@@ -9,6 +9,6 @@ export const customList = [
     title: "profile",
     path: "profile",
     sidebar: false,
-    element: <DashboardPage />,
+    element: "",
   },
 ];

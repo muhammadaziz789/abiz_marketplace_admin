@@ -23,8 +23,8 @@ export const SidebarBottom = ({ collapsed = true }: Props) => {
   const { navigateTo } = usePageRouter();
 
   const navigate = useCallback((link: string) => {
-    if (link === 'logout') {
-      return
+    if (link === "logout") {
+      return;
     }
     navigateTo(link);
   }, []);
@@ -37,7 +37,7 @@ export const SidebarBottom = ({ collapsed = true }: Props) => {
           onClick={() => navigate(item.path)}
           className="inline-flex items-center px-16px h-[42px] w-full hover:bg-[var(--hover)] cursor-pointer"
         >
-          <div className="mr-16px">
+          <div className={collapsed ? "mr-16px" : "flex justify-center w-full"}>
             <CIconGenerate fill="var(--black)" icon={item.icon} />
           </div>
 
