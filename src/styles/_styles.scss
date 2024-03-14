@@ -1,0 +1,46 @@
+#sidebar {
+  .ant-collapse {
+    background-color: transparent;
+    .ant-collapse-item {
+      .ant-collapse-header {
+        padding: 8px 0;
+        .ant-collapse-expand-icon {
+          display: none;
+        }
+
+        .ant-collapse-header-text {
+          padding: 0 16px;
+        }
+      }
+      .ant-collapse-content  {
+        .ant-collapse-content-box {
+          padding: 0 16px 16px 16px;
+        }
+      }
+    }
+  }
+}
+.ant-dropdown  {
+  .ant-dropdown-menu {
+    .ant-dropdown-menu-item {
+      // padding: 0;
+      height: 42px;
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+button {
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+}
+
+.save {
+  background-color: $primary;
+  color: white;
+}
