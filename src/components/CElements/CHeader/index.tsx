@@ -2,20 +2,20 @@ import { useWebsiteStore } from "../../../store/website";
 import { CBreadcrumb } from "../CBreadcrumb";
 import { ActiveMenu } from "./ActiveMenu";
 import { ExtraButtons } from "./ExtraButtons";
-import { MenuUnFoldIcon } from "../CIconGenerate/Icons/custom";
+import { ProfileUI } from "./Profile";
 
 interface Props {
   title?: string;
-  extraButtons?: boolean;
+  extraButtonActions?: any;
   breadcrumbList?: any;
 }
 
 export const CHeader = ({
   title = "",
-  extraButtons = true,
+  extraButtonActions,
   breadcrumbList = [],
 }: Props) => {
-  const { collapsed, setCollapsed } = useWebsiteStore();
+  const { collapsed } = useWebsiteStore();
 
   return (
     <div className="h-[70px]">
@@ -29,20 +29,20 @@ export const CHeader = ({
       >
         <div className="inline-flex items-center w-full h-full justify-between">
           <div className="flex space-x-20px">
-            {!collapsed && (
+            {/* {!collapsed && (
               <button
                 onClick={() => setCollapsed(!collapsed)}
                 className="flex items-center"
               >
                 <MenuUnFoldIcon />
               </button>
-            )}
+            )} */}
             <ActiveMenu />
             {title && <h1 className="text-xl font-medium">{title}</h1>}
             <CBreadcrumb items={breadcrumbList} />
           </div>
 
-          {extraButtons && <ExtraButtons />}
+          {extraButtonActions ? <ExtraButtons /> : <ProfileUI />}
         </div>
       </div>
     </div>

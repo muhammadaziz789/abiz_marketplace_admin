@@ -16,14 +16,6 @@ export const reportsList = [
     title: "report",
     path: "report",
     sidebar: true,
-    element: <DashboardPage />,
-  },
-  {
-    parent: '',
-    title: "test",
-    path: "test",
-    icon: 'catalog',
-    sidebar: true,
-    element: <DashboardPage />,
+    element: "reports",
   },
 ];

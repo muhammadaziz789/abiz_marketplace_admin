@@ -9,6 +9,11 @@ const list: any = [
     icon: "profile",
   },
   {
+    title: "settings",
+    path: "settings",
+    icon: "settings",
+  },
+  {
     title: "logout",
     path: "logout",
     icon: "logout",
@@ -30,7 +35,7 @@ export const SidebarBottom = ({ collapsed = true }: Props) => {
   }, []);
 
   return (
-    <div className="border-t border-[var(--border)] pb-20px">
+    <div className="border-t border-[var(--border)]">
       {list.map((item: any, index: number) => (
         <div
           key={index}

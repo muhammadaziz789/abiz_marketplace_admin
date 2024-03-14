@@ -1,4 +1,4 @@
-export const filterParams = (params: any) => {
+export const FilterParams = (params: any) => {
   let myObject: any = {};
 
   Object.entries(params).forEach(([key, value]) => {

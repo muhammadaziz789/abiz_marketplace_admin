@@ -37,9 +37,9 @@ export const MenuUnFoldIcon = () => (
   </svg>
 );
 
-export const SettingsIcon = () => (
+export const SettingsIcon = ({ width = 18 }) => (
   <svg
-    width="24"
+    width={width}
     viewBox="0 0 18 19"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

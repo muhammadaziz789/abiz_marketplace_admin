@@ -1,3 +1,4 @@
+import { SettingsIcon } from "./Icons/custom";
 import { DashboardIcon, LogoutIcon, ProductsIcon, ProfileIcon } from "./Icons/sidebar";
 
 export const iconsList = [
@@ -12,6 +13,10 @@ export const iconsList = [
   {
     name: "profile",
     component: ProfileIcon,
+  },
+  {
+    name: "settings",
+    component: SettingsIcon,
   },
   {
     name: "logout",

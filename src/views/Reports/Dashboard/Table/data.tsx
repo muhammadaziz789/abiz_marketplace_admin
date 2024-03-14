@@ -2,6 +2,7 @@ interface ColumnType {
   title: string;
   dataIndex: string;
   width?: number;
+  render?: (text: any, record: any) => React.ReactNode;
 }
 
 interface DataType {
@@ -11,11 +12,11 @@ interface DataType {
   address: string;
 }
 
-export const columns: ColumnType[] = [
+export const columns: any = [
   {
     title: "Name",
     dataIndex: "name",
-    width: 300,
+    width: 300
   },
   {
     title: "Age",
@@ -27,7 +28,6 @@ export const columns: ColumnType[] = [
     dataIndex: "address",
   },
 ];
-
 export const data: DataType[] = [
   {
     key: 1011,

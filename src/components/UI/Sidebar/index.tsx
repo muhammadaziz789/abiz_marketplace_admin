@@ -1,6 +1,9 @@
 import { SidebarMenu } from "./Menu";
 import { SidebarBottom } from "./Bottom";
-import { MenuFoldIcon } from "../../CElements/CIconGenerate/Icons/custom";
+import {
+  MenuFoldIcon,
+  MenuUnFoldIcon,
+} from "../../CElements/CIconGenerate/Icons/custom";
 
 interface Props {
   mode: string;
@@ -25,21 +28,28 @@ export const Sidebar = ({
       id="sidebar"
     >
       <div className="h-[70px]">
-        <div className={`h-[70px] flex items-center ${collapsed ? 'justify-between px-20px' : 'justify-center'}`}>
+        <div
+          className={`h-[70px] flex items-center ${
+            collapsed ? "justify-between px-20px" : "justify-center"
+          }`}
+        >
           {collapsed ? (
             <img src={getImgSrc(mode)} alt="logo" />
           ) : (
-            <img src="/logo.svg" alt="logo" />
+            <button
+              onClick={() => setCollapsed(!collapsed)}
+              className="flex items-center"
+            >
+              <MenuUnFoldIcon />
+            </button>
           )}
-          {collapsed ? (
+          {collapsed && (
             <button
               onClick={() => setCollapsed(!collapsed)}
               className="flex items-center"
             >
               <MenuFoldIcon />
             </button>
-          ) : (
-            ""
           )}
         </div>
       </div>

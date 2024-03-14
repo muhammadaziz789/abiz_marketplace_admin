@@ -5,7 +5,7 @@ import {
   useSearchParams,
 } from "react-router-dom";
 import { LightThemeContants } from "../../constants/colors";
-import { filterParams } from "../../utils/filterParams";
+import { FilterParams } from "../../utils/FilterParams";
 // import { ColorConstants } from "../../constants/website";
 
 export default function usePageRouter() {
@@ -26,7 +26,7 @@ export default function usePageRouter() {
   };
 
   const navigateQuery = (obj: any) => {
-    const newQuery = filterParams({
+    const newQuery = FilterParams({
       page: query.page ?? null,
       search: query.search ?? null,
       ...obj,

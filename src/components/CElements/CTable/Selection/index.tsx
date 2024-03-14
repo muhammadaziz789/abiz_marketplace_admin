@@ -42,7 +42,7 @@ export const ColumnSelection = ({ columns, tableName = "" }: Props) => {
     <>
       <div className="relative">
         <button onClick={() => setVisible(true)}>
-          <SettingsIcon />
+          <SettingsIcon width={24} />
         </button>
 
         {visible && (
