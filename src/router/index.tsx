@@ -11,7 +11,7 @@ import PageFallback from "../components/UI/PageFallback";
 import { useWebsiteStore } from "../store/website";
 
 const Router = () => {
-  const { isAuth, setAuth } = useAuthStore();
+  const { isAuth } = useAuthStore();
   const { setRoutes } = useWebsiteStore();
 
   // useEffect(() => {

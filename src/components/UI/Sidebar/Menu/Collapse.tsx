@@ -1,7 +1,7 @@
 import { Collapse, Dropdown } from "antd";
 import { CollapseItem } from "./MenuItem";
 import { CIconGenerate } from "../../../CElements/CIconGenerate";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
 
 interface Props {
