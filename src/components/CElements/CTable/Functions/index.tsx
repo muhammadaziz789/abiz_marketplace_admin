@@ -54,7 +54,7 @@ export const AvailableColumns = () => {
         }
       });
     } else {
-      result = [];
+      result = columns;
     }
 
     return result;
