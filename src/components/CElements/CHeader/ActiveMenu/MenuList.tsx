@@ -53,7 +53,9 @@ export const ActiveMenuList = () => {
             ))}
           </>
         ) : (
-          <img src={epmtyImage} alt="img" />
+          <div className="w-[100px] min-h-[110px] mx-auto">
+            <img src={epmtyImage} alt="img" /> 
+          </div>
         )}
         {!routeOpen && (
           <Button

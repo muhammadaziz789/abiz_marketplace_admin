@@ -73,7 +73,9 @@ export const RouteList = ({ setRouteOpen = () => {} }: Props) => {
           ))}
         </>
       ) : (
-        <img src={epmtyImage} alt="empty" />
+        <div className="w-[100px] min-h-[110px] mx-auto">
+          <img src={epmtyImage} alt="img" />
+        </div>
       )}
       <Button
         onClick={() => handleSubmit(activeList)}
