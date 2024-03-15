@@ -37,7 +37,6 @@ export const ProfileIcon = ({ fill = "#202224" }: { fill?: string }) => (
 export const LogoutIcon = ({ fill = "#202224" }: { fill?: string }) => (
   <svg
     width="18"
-    height="17"
     viewBox="0 0 18 17"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

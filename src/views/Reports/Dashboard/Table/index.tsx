@@ -6,7 +6,7 @@ export const DashboardTable = () => {
   const { navigateTo } = usePageRouter();
 
   const rowClick = (val1: any) => {
-    navigateTo(`/reports/dashboard/${val1.id}`);
+    navigateTo(`/reports/users/${val1.id}`);
   };
 
   return (

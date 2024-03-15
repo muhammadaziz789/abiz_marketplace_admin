@@ -61,7 +61,7 @@ export const MenuCollapse = ({
   };
 
   const dropDownitems: any = element.list.map((item: any) => {
-    if (!item.sidebar) return 
+    if (!item.sidebar) return;
     return {
       label: (
         <CollapseItem
@@ -85,13 +85,13 @@ export const MenuCollapse = ({
           onChange={onChange}
         />
       ) : (
-        <div className="px-16px relative h-[42px] flex items-center">
+        <div className="px-20px relative h-[42px] flex items-center">
           <Dropdown
             menu={{ items: dropDownitems }}
             trigger={["hover"]}
             placement="bottomRight"
           >
-            <button>
+            <button className={"flex justify-center w-full"}>
               <CIconGenerate fill="var(--black)" icon={element.icon} />
             </button>
           </Dropdown>

@@ -1,14 +1,15 @@
+import { Input } from "antd";
 import { CHeader } from "../../../../components/CElements/CHeader";
 import { PageWrapper } from "../../../../components/UI/PageWrapper";
 import { useWebsiteStore } from "../../../../store/website";
 
 const breadcrumbList = [
   {
-    title: "Dashboard page",
+    title: "Foydalanuvchilar sahifasi",
     link: -1,
   },
   {
-    title: "Dashboard update",
+    title: "Foydalanuvchi",
   },
 ];
 
@@ -26,7 +27,9 @@ export const DashboardSinglePage = () => {
         extraButtonsClick={extraButtonsClick}
         breadcrumbList={breadcrumbList}
       />
-      <PageWrapper>wrapper</PageWrapper>
+      <PageWrapper>
+        <Input />
+      </PageWrapper>
     </>
   );
 };

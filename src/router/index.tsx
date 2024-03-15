@@ -49,7 +49,7 @@ const Router = () => {
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>
-        <Route index element={<Navigate to="/reports/dashboard" />} />
+        <Route index element={<Navigate to="/reports/users" />} />
         {routeList.map((route: any) => {
           return (
             <Route

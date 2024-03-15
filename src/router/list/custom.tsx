@@ -10,7 +10,8 @@ export const customList = [
     parent: '',
     title: "settings",
     path: "settings",
-    sidebar: false,
+    icon: 'settings',
+    sidebar: true,
     element: "Settings",
   },
 ];

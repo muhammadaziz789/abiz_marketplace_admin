@@ -7,15 +7,22 @@ const DashboardPage = lazy(() => import("../../views/Reports/Dashboard"));
 export const reportsList = [
   {
     parent: 'reports',
-    title: "dashboard",
-    path: "dashboard",
+    title: "Foydalanuvchilar",
+    path: "users",
     sidebar: true,
     element: <DashboardPage />,
   },
   {
     parent: 'reports',
     title: "",
-    path: "dashboard/:id",
+    path: "users/:id",
+    sidebar: false,
+    element: <DashboardSinglePage />,
+  },
+  {
+    parent: 'reports',
+    title: "",
+    path: "users/update",
     sidebar: false,
     element: <DashboardSinglePage />,
   },

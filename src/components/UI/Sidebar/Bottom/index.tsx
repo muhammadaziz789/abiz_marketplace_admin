@@ -1,17 +1,12 @@
-import { useCallback } from "react";
+import { memo } from "react";
 import usePageRouter from "../../../../hooks/usePageRouter";
 import { CIconGenerate } from "../../../CElements/CIconGenerate";
 
 const list: any = [
   {
-    title: "profile",
+    title: "Muhammadaziz",
     path: "profile",
     icon: "profile",
-  },
-  {
-    title: "settings",
-    path: "settings",
-    icon: "settings",
   },
   {
     title: "logout",
@@ -24,15 +19,15 @@ interface Props {
   collapsed: boolean;
 }
 
-export const SidebarBottom = ({ collapsed = true }: Props) => {
+export const SidebarBottom = memo(({ collapsed = true }: Props) => {
   const { navigateTo } = usePageRouter();
 
-  const navigate = useCallback((link: string) => {
+  const navigate = (link: string) => {
     if (link === "logout") {
       return;
     }
     navigateTo(link);
-  }, []);
+  };
 
   return (
     <div className="border-t border-[var(--border)]">
@@ -40,10 +35,24 @@ export const SidebarBottom = ({ collapsed = true }: Props) => {
         <div
           key={index}
           onClick={() => navigate(item.path)}
-          className="inline-flex items-center px-16px h-[42px] w-full hover:bg-[var(--hover)] cursor-pointer"
+          className="inline-flex items-center px-20px h-[42px] w-full hover:bg-[var(--hover)] cursor-pointer"
         >
-          <div className={collapsed ? "mr-16px" : "flex justify-center w-full"}>
-            <CIconGenerate fill="var(--black)" icon={item.icon} />
+          <div
+            className={`${
+              collapsed ? "mr-16px" : "flex justify-center w-full"
+            } w-[30px]`}
+          >
+            {item.icon === "profile" ? (
+              <div className="w-[30px] h-[30px] rounded-full border border-[var(--border)] flex items-center justify-center">
+                <img
+                  src="/user.jpeg"
+                  alt="user"
+                  className="rounded-full w-full h-full"
+                />
+              </div>
+            ) : (
+              <CIconGenerate fill="var(--black)" icon={item.icon} />
+            )}
           </div>
 
           {collapsed && (
@@ -53,4 +62,4 @@ export const SidebarBottom = ({ collapsed = true }: Props) => {
       ))}
     </div>
   );
-};
+});

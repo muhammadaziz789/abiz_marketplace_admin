@@ -16,13 +16,17 @@ export const MenuItem = ({
   return (
     <div
       onClick={() => navigate(element.path)}
-      className="inline-flex items-center px-16px h-[42px] w-full hover:bg-[var(--hover)] cursor-pointer"
+      className="inline-flex items-center px-20px h-[42px] w-full hover:bg-[var(--hover)] cursor-pointer"
       style={{
         backgroundColor: checkpath(element.path) ? "var(--primary)" : "",
       }}
     >
       {element.icon && (
-        <div className="mr-16px w-[24px]">
+        <div
+          className={`${
+            open ? "mr-16px" : "flex justify-center w-full"
+          } w-[24px]`}
+        >
           <CIconGenerate
             fill={checkpath(element.path) ? "white" : "var(--black)"}
             icon={element.icon}

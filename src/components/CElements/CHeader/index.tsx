@@ -1,19 +1,21 @@
+import { ReactNode } from "react";
 import { useWebsiteStore } from "../../../store/website";
 import { CBreadcrumb } from "../CBreadcrumb";
 import { ActiveMenu } from "./ActiveMenu";
 import { ExtraButtons } from "./ExtraButtons";
-import { ProfileUI } from "./Profile";
 
 interface Props {
   title?: string;
   extraButtonsClick?: any;
   breadcrumbList?: any;
+  children?: ReactNode
 }
 
 export const CHeader = ({
   title = "",
   extraButtonsClick,
   breadcrumbList = [],
+  children
 }: Props) => {
   const { collapsed } = useWebsiteStore();
 
@@ -28,21 +30,17 @@ export const CHeader = ({
         }}
       >
         <div className="inline-flex items-center w-full h-full justify-between">
-          <div className="flex space-x-20px">
-            {/* {!collapsed && (
-              <button
-                onClick={() => setCollapsed(!collapsed)}
-                className="flex items-center"
-              >
-                <MenuUnFoldIcon />
-              </button>
-            )} */}
+          <div className="flex items-center space-x-20px">
             <ActiveMenu />
-            {title && <h1 className="text-xl font-medium">{title}</h1>}
+            {title && !breadcrumbList.length && <h1 className="text-xl font-medium">{title}</h1>}
             <CBreadcrumb items={breadcrumbList} />
           </div>
-
-          {extraButtonsClick ? <ExtraButtons extraButtonsClick={extraButtonsClick} /> : <ProfileUI />}
+          {children}
+          {extraButtonsClick ? (
+            <ExtraButtons extraButtonsClick={extraButtonsClick} />
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>

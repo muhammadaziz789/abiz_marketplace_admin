@@ -1,5 +1,5 @@
 import { Button } from "antd";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 interface Props {
   extraButtonsClick: any;
