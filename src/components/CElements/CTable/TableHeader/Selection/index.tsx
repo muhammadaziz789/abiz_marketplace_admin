@@ -35,7 +35,9 @@ export const ColumnSelection = ({ columns, tableName = "" }: Props) => {
   useEffect(() => {
     if (details?.[tableName]?.columns?.length) {
       setList(details[tableName].columns);
-    } else setList([])
+    } else {
+      setList(columns?.map((item: any) => item.dataIndex))
+    }
   }, [details[tableName]]);
 
   return (
