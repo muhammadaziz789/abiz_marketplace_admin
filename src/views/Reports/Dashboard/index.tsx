@@ -11,7 +11,7 @@ const DashboardPage = () => {
     <>
       <CHeader title="Foydalanuvchilar">
         <Button
-          onClick={() => navigateTo("/reports/users/update")}
+          onClick={() => navigateTo("/reports/users/create")}
           type="primary"
           className="save"
           icon={<PlusOutlined />}

@@ -22,7 +22,7 @@ export const reportsList = [
   {
     parent: 'reports',
     title: "",
-    path: "users/update",
+    path: "users/create",
     sidebar: false,
     element: <DashboardSinglePage />,
   },
