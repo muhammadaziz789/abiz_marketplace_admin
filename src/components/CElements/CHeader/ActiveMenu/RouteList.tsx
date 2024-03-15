@@ -12,14 +12,14 @@ interface Props {
 export const RouteList = ({ setRouteOpen = () => {} }: Props) => {
   const { routes, activeMenuList, setActiveMenuList } = useWebsiteStore();
   const [list, setList]: any = useState([]);
-  const [activeList, setActiveList] = useState([...activeMenuList]);
+  const [activeList, setActiveList] = useState([]);
 
-  const handleClick = (eleement: any) => {
+  const handleClick = (element: any) => {
     let arr: any = activeList || [];
 
-    if (list.includes(eleement.path)) {
-      arr = arr.filter((item: any) => item.path !== eleement.path);
-    } else arr = [...arr, eleement];
+    if (arr.some((item: any) => item.path === element.path)) {
+      arr = arr.filter((item: any) => item.path !== element.path);
+    } else arr = [...arr, element];
 
     setActiveList(arr);
   };
@@ -28,6 +28,12 @@ export const RouteList = ({ setRouteOpen = () => {} }: Props) => {
     setActiveMenuList(arr);
     setRouteOpen(false);
   };
+
+  useEffect(() => {
+    if (activeMenuList?.length) {
+      setActiveList(activeMenuList);
+    }
+  }, [activeMenuList]);
 
   useEffect(() => {
     if (activeList?.length) {
