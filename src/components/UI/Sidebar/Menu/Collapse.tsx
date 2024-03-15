@@ -26,7 +26,7 @@ export const MenuCollapse = ({
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             {element.icon ? (
-              <div className="mr-16px">
+              <div className="mr-16px w-[24px]">
                 <CIconGenerate fill="var(--black)" icon={element.icon} />
               </div>
             ) : (

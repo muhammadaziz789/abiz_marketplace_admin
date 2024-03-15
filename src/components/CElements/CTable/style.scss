@@ -1,5 +1,11 @@
 #ctable {
     .ant-pagination {
         padding: 0 16px;
+        position: relative;
+
+        .ant-pagination-options {
+            position: absolute;
+            left: 0;
+        }
     }
 }

@@ -22,7 +22,7 @@ export const MenuItem = ({
       }}
     >
       {element.icon && (
-        <div className="mr-16px">
+        <div className="mr-16px w-[24px]">
           <CIconGenerate
             fill={checkpath(element.path) ? "white" : "var(--black)"}
             icon={element.icon}

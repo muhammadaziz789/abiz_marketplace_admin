@@ -6,13 +6,13 @@ import { ProfileUI } from "./Profile";
 
 interface Props {
   title?: string;
-  extraButtonActions?: any;
+  extraButtonsClick?: any;
   breadcrumbList?: any;
 }
 
 export const CHeader = ({
   title = "",
-  extraButtonActions,
+  extraButtonsClick,
   breadcrumbList = [],
 }: Props) => {
   const { collapsed } = useWebsiteStore();
@@ -20,7 +20,7 @@ export const CHeader = ({
   return (
     <div className="h-[70px]">
       <div
-        className={`px-20px h-[70px] bg-[var(--white)] fixed ${
+        className={`px-20px h-[70px] z-[98] bg-[var(--white)] fixed ${
           collapsed ? "left-[240px]" : "left-[60px]"
         } top-0`}
         style={{
@@ -42,7 +42,7 @@ export const CHeader = ({
             <CBreadcrumb items={breadcrumbList} />
           </div>
 
-          {extraButtonActions ? <ExtraButtons /> : <ProfileUI />}
+          {extraButtonsClick ? <ExtraButtons extraButtonsClick={extraButtonsClick} /> : <ProfileUI />}
         </div>
       </div>
     </div>

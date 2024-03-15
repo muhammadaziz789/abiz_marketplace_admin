@@ -1,4 +1,5 @@
 import { lazy } from "react";
+import { DashboardSinglePage } from "../../views/Reports/Dashboard/SinglePage";
 
 const DashboardPage = lazy(() => import("../../views/Reports/Dashboard"));
 
@@ -13,9 +14,9 @@ export const reportsList = [
   },
   {
     parent: 'reports',
-    title: "report",
-    path: "report",
-    sidebar: true,
-    element: "reports",
+    title: "",
+    path: "dashboard/:id",
+    sidebar: false,
+    element: <DashboardSinglePage />,
   },
 ];

@@ -7,9 +7,15 @@ export const useWebsiteStore = create(
       routes: [],
       collapsed: true,
       tableDetails: {},
+      alert: {
+        message: "",
+        description: "",
+        type: "success",
+      },
       setRoutes: (payload: any) => set({ routes: payload }),
       setCollapsed: (payload: any) => set({ collapsed: payload }),
       setTableDetails: (payload: any) => set({ tableDetails: payload }),
+      setAlert: (payload: any) => set({ alert: payload }),
     }),
     {
       name: "app-state-website",

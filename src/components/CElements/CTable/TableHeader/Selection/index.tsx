@@ -1,8 +1,8 @@
 import { Checkbox } from "antd";
-import { SettingsIcon } from "../../CIconGenerate/Icons/custom";
+import { SettingsIcon } from "../../../CIconGenerate/Icons/custom";
 import { useEffect, useState } from "react";
-import Closer from "../../../UI/Closer";
-import { useWebsiteStore } from "../../../../store/website";
+import Closer from "../../../../UI/Closer";
+import { useWebsiteStore } from "../../../../../store/website";
 
 interface Props {
   columns: any;
