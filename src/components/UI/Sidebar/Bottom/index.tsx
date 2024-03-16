@@ -43,12 +43,14 @@ export const SidebarBottom = memo(({ collapsed = true }: Props) => {
             } w-[30px]`}
           >
             {item.icon === "profile" ? (
-              <div className="w-[30px] h-[30px] rounded-full border border-[var(--border)] flex items-center justify-center">
-                <img
-                  src="/user.jpeg"
-                  alt="user"
-                  className="rounded-full w-full h-full"
-                />
+              <div className="w-[30px] h-[30px]">
+                <div className="w-[30px] h-[30px] rounded-full border border-[var(--border)] flex items-center justify-center">
+                  <img
+                    src="/user.jpeg"
+                    alt="user"
+                    className="rounded-full w-full h-full"
+                  />
+                </div>
               </div>
             ) : (
               <CIconGenerate fill="var(--black)" icon={item.icon} />

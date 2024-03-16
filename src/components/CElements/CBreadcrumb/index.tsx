@@ -1,3 +1,4 @@
+import { ArrowLeftOutlined } from "@ant-design/icons";
 import { Breadcrumb } from "antd";
 import { memo } from "react";
 import { Link, useParams } from "react-router-dom";
@@ -13,24 +14,23 @@ export const CBreadcrumb = memo(({ items }: Props) => {
     if (last) {
       return id ? "tahrirlash" : "qo'shish";
     }
-    return ""
+    return "";
   };
 
   const newItems = items?.map((item: any, index: number) => {
     return {
       title: (
-        <Link
-          to={item.link}
-          style={{ color: index == items.length - 1 ? "var(--black)" : "" }}
-        >
-          {item.title} {Plustitle(index == items.length - 1, id)}
-        </Link>
-      ),
-      link: (
         <>
-          {item.link}
+          {index === 0 && <ArrowLeftOutlined />}
+          <Link
+            to={item.link}
+            style={{ color: index == items.length - 1 ? "var(--black)" : "" }}
+          >
+            {item.title} {Plustitle(index == items.length - 1, id)}
+          </Link>
         </>
       ),
+      link: <>{item.link}</>,
     };
   });
 

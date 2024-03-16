@@ -1,15 +1,21 @@
-// import { Input } from "antd";
-
-import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
-import { Button } from "antd";
-
+import { SettingCell } from "./SettingCell";
 interface Props {
   column: any;
   value: any;
   row: any;
+  edit: boolean;
+  rowClick?: (val: any) => void;
+  setEdit: (val: boolean) => void;
 }
 
-export const TableCell = ({ row = {}, column = {}, value }: Props) => {
+export const TableCell = ({
+  edit = false,
+  setEdit = () => {},
+  row = {},
+  column = {},
+  value,
+  rowClick = () => {},
+}: Props) => {
   const currentValue = column?.render
     ? Array.isArray(column.dataIndex)
       ? column.render(column.dataIndex.map((data: any) => row?.[data]))
@@ -18,17 +24,9 @@ export const TableCell = ({ row = {}, column = {}, value }: Props) => {
     ? row?.[column.dataIndex]
     : value;
 
-  // console.log('column', column);
-
-  if (column.dataIndex === "setting") {
-    return (
-      <div className="space-x-2">
-        <Button icon={<EyeOutlined />}></Button>
-        <Button icon={<EditOutlined />}></Button>
-        <Button icon={<DeleteOutlined />} type="primary" danger></Button>
-      </div>
-    );
-  }
-
-  return <>{currentValue}</>;
+  return column.dataIndex === "setting" ? (
+    <SettingCell row={row} rowClick={rowClick} setEdit={setEdit} />
+  ) : (
+    <div onClick={() => rowClick(row)}>{currentValue}</div>
+  );
 };

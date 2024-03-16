@@ -3,7 +3,7 @@ import { TablePagination } from "./Functions";
 import "./style.scss";
 import { useWebsiteStore } from "../../../store/website";
 import { useLocation } from "react-router-dom";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { AvailableColumns } from "./Functions";
 import { TableHeader } from "./TableHeader";
 import { TableCell } from "./TableCell";
@@ -26,6 +26,7 @@ const CTable = ({
 
   const location = useLocation();
   const { tableDetails } = useWebsiteStore();
+  const [edit, setEdit] = useState(false);
 
   const { getAvailableColumns } = AvailableColumns();
   const tableName = location.pathname;
@@ -46,13 +47,17 @@ const CTable = ({
               key={index}
               value={value}
               row={element}
+              rowClick={rowClick}
               column={column}
+              edit={edit}
+              setEdit={setEdit}
             />
           );
         },
       };
     });
   }, [availableColumns]);
+
 
   return (
     <div id="ctable">
@@ -71,9 +76,6 @@ const CTable = ({
             pageSizeOptions,
             onChange: handlePageSizeChange,
           }}
-          onRow={(record, rowIndex) => ({
-            onClick: () => rowClick(record, rowIndex),
-          })}
           scroll={{ y: "500px" }}
         />
       </div>
