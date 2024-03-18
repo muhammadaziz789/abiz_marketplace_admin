@@ -1,6 +1,14 @@
 export const customList = [
   {
     parent: '',
+    title: "test",
+    path: "test",
+    icon: '',
+    sidebar: true,
+    element: "Test",
+  },
+  {
+    parent: '',
     title: "profile",
     path: "profile",
     sidebar: false,
@@ -11,7 +19,7 @@ export const customList = [
     title: "settings",
     path: "settings",
     icon: 'settings',
-    sidebar: true,
+    sidebar: false,
     element: "Settings",
   },
 ];

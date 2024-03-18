@@ -13,7 +13,7 @@ const breadcrumbList = [
   },
 ];
 
-export const DashboardSinglePage = () => {
+export const UsersTableSinglePage = () => {
   const { setAlert } = useWebsiteStore();
   const extraButtonsClick = (type: string) => {
     if (type === "save") {

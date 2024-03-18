@@ -9,6 +9,12 @@ const list: any = [
     icon: "profile",
   },
   {
+    title: "Settings",
+    path: "settings",
+    icon: "settings",
+  },
+
+  {
     title: "logout",
     path: "logout",
     icon: "logout",

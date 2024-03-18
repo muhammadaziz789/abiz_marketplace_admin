@@ -1,29 +1,37 @@
 import { lazy } from "react";
-import { DashboardSinglePage } from "../../views/Reports/Dashboard/SinglePage";
+import { UsersTableSinglePage } from "../../views/Reports/Users/SinglePage";
 
-const DashboardPage = lazy(() => import("../../views/Reports/Dashboard"));
+const UsersPage = lazy(() => import("../../views/Reports/Users"));
+const ProductsPage = lazy(() => import("../../views/Reports/Products"))
 
 
 export const reportsList = [
   {
     parent: 'reports',
+    title: "Maxsulotlar",
+    path: "dashboard",
+    sidebar: true,
+    element: <ProductsPage />,
+  },
+  {
+    parent: 'reports',
     title: "Foydalanuvchilar",
     path: "users",
     sidebar: true,
-    element: <DashboardPage />,
+    element: <UsersPage />,
   },
   {
     parent: 'reports',
     title: "",
     path: "users/:id",
     sidebar: false,
-    element: <DashboardSinglePage />,
+    element: <UsersTableSinglePage />,
   },
   {
     parent: 'reports',
     title: "",
     path: "users/create",
     sidebar: false,
-    element: <DashboardSinglePage />,
+    element: <UsersTableSinglePage />,
   },
 ];

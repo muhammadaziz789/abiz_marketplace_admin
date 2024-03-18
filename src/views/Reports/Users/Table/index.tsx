@@ -2,7 +2,7 @@ import CTable from "../../../../components/CElements/CTable";
 import usePageRouter from "../../../../hooks/usePageRouter";
 import { data, columns } from "./data";
 
-export const DashboardTable = () => {
+export const UsersTable = () => {
   const { navigateTo } = usePageRouter();
 
   const rowClick = (val1: any) => {
