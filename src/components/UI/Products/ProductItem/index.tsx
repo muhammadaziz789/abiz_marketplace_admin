@@ -6,7 +6,7 @@ export const ProductItem = () => {
       <div className="h-[250px]">
         <img
           className="w-full h-full object-cover"
-          src="/public/user.jpeg"
+          src="/user.jpeg"
           alt="img"
         />
       </div>
