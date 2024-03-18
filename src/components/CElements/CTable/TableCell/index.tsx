@@ -16,6 +16,8 @@ export const TableCell = ({
   value,
   rowClick = () => {},
 }: Props) => {
+  console.log('edit', edit);
+  
   const currentValue = column?.render
     ? Array.isArray(column.dataIndex)
       ? column.render(column.dataIndex.map((data: any) => row?.[data]))
