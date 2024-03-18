@@ -26,8 +26,9 @@ const CTable = ({
 
   const location = useLocation();
   const { tableDetails } = useWebsiteStore();
-  const [edit, setEdit] = useState(false);
+  const [edit, setEdit]: any = useState(null);
 
+  
   const { getAvailableColumns } = AvailableColumns();
   const tableName = location.pathname;
   const details: any = tableDetails;
@@ -45,6 +46,7 @@ const CTable = ({
           return (
             <TableCell
               key={index}
+              index={index}
               value={value}
               row={element}
               rowClick={rowClick}
@@ -56,7 +58,7 @@ const CTable = ({
         },
       };
     });
-  }, [availableColumns]);
+  }, [availableColumns, edit]);
 
 
   return (

@@ -1,9 +1,6 @@
 import { SidebarMenu } from "./Menu";
 import { SidebarBottom } from "./Bottom";
-import {
-  MenuFoldIcon,
-  MenuUnFoldIcon,
-} from "../../CElements/CIconGenerate/Icons/custom";
+import { FoldButton } from "./FoldButton";
 
 interface Props {
   mode: string;
@@ -33,30 +30,15 @@ export const Sidebar = ({
             collapsed ? "justify-between px-20px" : "justify-center"
           }`}
         >
-          {collapsed ? (
-            <img src={getImgSrc(mode)} alt="logo" />
-          ) : (
-            <button
-              onClick={() => setCollapsed(!collapsed)}
-              className="flex items-center"
-            >
-              <MenuUnFoldIcon />
-            </button>
-          )}
-          {collapsed && (
-            <button
-              onClick={() => setCollapsed(!collapsed)}
-              className="flex items-center"
-            >
-              <MenuFoldIcon />
-            </button>
-          )}
+          {collapsed ? <img src={getImgSrc(mode)} alt="logo" /> : <img src="/logo.svg" alt="logo mini" />}
         </div>
       </div>
 
       <SidebarMenu routes={routes} collapsed={collapsed} />
 
       <SidebarBottom collapsed={collapsed} />
+
+      <FoldButton collapsed={collapsed} setCollapsed={setCollapsed} />
     </div>
   );
 };

@@ -32,7 +32,7 @@
   }
 }
 
-button {
+button, input {
   background-color: transparent;
   margin: 0;
   padding: 0;
@@ -40,7 +40,7 @@ button {
   border: none;
 }
 
-.save {
+.save, .ant-btn-primary {
   background-color: $primary;
   color: white;
 }

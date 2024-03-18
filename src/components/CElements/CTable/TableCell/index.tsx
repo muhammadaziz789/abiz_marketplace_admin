@@ -1,23 +1,24 @@
+import { EditUI } from "./Edit";
 import { SettingCell } from "./SettingCell";
 interface Props {
+  index: number;
   column: any;
   value: any;
   row: any;
-  edit: boolean;
+  edit: any;
   rowClick?: (val: any) => void;
-  setEdit: (val: boolean) => void;
+  setEdit: (val: any) => void;
 }
 
 export const TableCell = ({
-  edit = false,
+  index,
+  edit,
   setEdit = () => {},
   row = {},
   column = {},
   value,
   rowClick = () => {},
 }: Props) => {
-  console.log('edit', edit);
-  
   const currentValue = column?.render
     ? Array.isArray(column.dataIndex)
       ? column.render(column.dataIndex.map((data: any) => row?.[data]))
@@ -26,9 +27,25 @@ export const TableCell = ({
     ? row?.[column.dataIndex]
     : value;
 
-  return column.dataIndex === "setting" ? (
-    <SettingCell row={row} rowClick={rowClick} setEdit={setEdit} />
-  ) : (
-    <div onClick={() => rowClick(row)}>{currentValue}</div>
+  if (column.dataIndex === "setting") {
+    return (
+      <SettingCell
+        row={row}
+        edit={edit}
+        index={index}
+        rowClick={rowClick}
+        setEdit={setEdit}
+      />
+    );
+  }
+
+  return (
+    <>
+      {index === edit ? (
+        <EditUI currentValue={currentValue} />
+      ) : (
+        <div onClick={() => rowClick(row)}>{currentValue}</div>
+      )}
+    </>
   );
 };
