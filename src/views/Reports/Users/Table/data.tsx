@@ -10,7 +10,7 @@ interface DataType {
   name: string;
   age: number;
   address: string;
-  id: number
+  id: number;
 }
 
 export const columns: any = [
@@ -18,9 +18,9 @@ export const columns: any = [
     title: "Name",
     dataIndex: "name",
     width: 300,
-    // render: () => {
-    //   return <>111</>
-    // }
+    render: () => {
+      return <>111</>;
+    },
   },
   {
     title: "Age",
@@ -32,12 +32,9 @@ export const columns: any = [
     dataIndex: "address",
   },
   {
-    title: 'setting',
-    dataIndex: 'setting',
-    render: () => {
-      return '111'
-    }
-  }
+    title: "setting",
+    dataIndex: "setting",
+  },
 ];
 export const data: DataType[] = [
   {

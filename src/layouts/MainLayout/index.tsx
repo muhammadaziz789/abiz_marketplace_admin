@@ -16,7 +16,7 @@ const MainLayout = () => {
         style={{ width: collapsed ? "240px" : "60px" }}
       >
         <div
-          className="fixed left-0 h-full duration-200"
+          className="fixed left-0 h-full duration-200 z-[99]"
           style={{ width: collapsed ? "240px" : "60px" }}
         >
           <Sidebar

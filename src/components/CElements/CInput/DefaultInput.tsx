@@ -1,23 +1,27 @@
 import { Input } from "antd";
 import { useEffect, useState } from "react";
+import { CLabel } from "./Label";
 
 interface Props {
+  props?: any;
   value?: any;
-  type?: string;
-  label?: string;
   error?: any;
+  type: string;
+  label?: string;
   classes?: string;
-  placeholder?: string;
   defaultValue?: any;
+  required?: boolean;
+  placeholder?: string;
   onChange?: (val: any) => void;
 }
 
 export const DefaultInput = ({
-  value,
   type,
+  value,
   label,
   error,
   classes,
+  required,
   placeholder,
   defaultValue,
   onChange = () => {},
@@ -40,6 +44,7 @@ export const DefaultInput = ({
 
   return (
     <>
+      <CLabel label={label} required={required} />
       <Input
         type={type}
         value={current}

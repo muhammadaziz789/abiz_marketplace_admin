@@ -12,14 +12,14 @@ interface Props {
   columns: any;
   data?: any;
   headerTitle?: any;
-  rowClick?: (val: any, val2?: number) => void;
+  rowClick?: any;
 }
 
 const CTable = ({
   columns = [],
   data = [],
   headerTitle = {},
-  rowClick = () => {},
+  rowClick,
 }: Props) => {
   const { current, pageSize, pageSizeOptions, handlePageSizeChange } =
     TablePagination();
@@ -28,7 +28,6 @@ const CTable = ({
   const { tableDetails } = useWebsiteStore();
   const [edit, setEdit]: any = useState(null);
 
-  
   const { getAvailableColumns } = AvailableColumns();
   const tableName = location.pathname;
   const details: any = tableDetails;
@@ -46,20 +45,19 @@ const CTable = ({
           return (
             <TableCell
               key={index}
+              edit={edit}
               index={index}
               value={value}
               row={element}
-              rowClick={rowClick}
               column={column}
-              edit={edit}
               setEdit={setEdit}
+              rowClick={rowClick}
             />
           );
         },
       };
     });
   }, [availableColumns, edit]);
-
 
   return (
     <div id="ctable">

@@ -5,5 +5,7 @@ interface Props {
 }
 
 export const EditUI = ({ currentValue }: Props) => {
+  if (typeof currentValue === "object") return <>{currentValue}</>
+
   return <CInput defaultValue={currentValue} />;
 };

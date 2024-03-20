@@ -1,23 +1,27 @@
 import { ReactNode } from "react";
 import { useWebsiteStore } from "../../../store/website";
 import { CBreadcrumb } from "../CBreadcrumb";
-import { ActiveMenu } from "./ActiveMenu";
 import { ExtraButtons } from "./ExtraButtons";
+import { HumburgerIcon } from "../CIconGenerate/Icons/custom";
+import { useActiveMenu } from "../../../store/activeMenu";
 
 interface Props {
   title?: string;
   extraButtonsClick?: any;
   breadcrumbList?: any;
-  children?: ReactNode
+  children?: ReactNode;
+  formRef?: any;
 }
 
 export const CHeader = ({
   title = "",
   extraButtonsClick,
   breadcrumbList = [],
-  children
+  formRef,
+  children,
 }: Props) => {
   const { collapsed } = useWebsiteStore();
+  const { setOpenMenu } = useActiveMenu();
 
   return (
     <div className="h-[70px]">
@@ -31,13 +35,25 @@ export const CHeader = ({
       >
         <div className="inline-flex items-center w-full h-full justify-between">
           <div className="flex items-center space-x-20px">
-            <ActiveMenu />
-            {title && !breadcrumbList.length && <h1 className="text-xl font-medium">{title}</h1>}
+            {!collapsed && (
+              <button
+                onClick={() => setOpenMenu(true)}
+                className="cursor-pointer"
+              >
+                <HumburgerIcon />
+              </button>
+            )}
+            {title && !breadcrumbList.length && (
+              <h1 className="text-xl font-medium">{title}</h1>
+            )}
             <CBreadcrumb items={breadcrumbList} />
           </div>
           {children}
           {extraButtonsClick ? (
-            <ExtraButtons extraButtonsClick={extraButtonsClick} />
+            <ExtraButtons
+              formRef={formRef}
+              extraButtonsClick={extraButtonsClick}
+            />
           ) : (
             ""
           )}

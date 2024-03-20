@@ -1,6 +1,7 @@
 import { SidebarMenu } from "./Menu";
 import { SidebarBottom } from "./Bottom";
 import { FoldButton } from "./FoldButton";
+import { ActiveMenu } from "./ActiveMenu";
 
 interface Props {
   mode: string;
@@ -30,7 +31,12 @@ export const Sidebar = ({
             collapsed ? "justify-between px-20px" : "justify-center"
           }`}
         >
-          {collapsed ? <img src={getImgSrc(mode)} alt="logo" /> : <img src="/logo.svg" alt="logo mini" />}
+          {collapsed ? (
+            <img src={getImgSrc(mode)} alt="logo" />
+          ) : (
+            <img src="/logo.svg" alt="logo mini" />
+          )}
+          <ActiveMenu collapsed={collapsed} />
         </div>
       </div>
 

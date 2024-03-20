@@ -1,6 +1,6 @@
 import { Collapse } from "antd";
 // import { CollapseItem } from "./MenuItem";
-import { CIconGenerate } from "../../CIconGenerate";
+import { CIconGenerate } from "../../../CElements/CIconGenerate";
 import { useState } from "react";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
 import { ActiveMenuCollapseItem } from "./ActiveItem";

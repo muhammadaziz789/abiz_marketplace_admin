@@ -1,8 +1,13 @@
-import { Checkbox } from "antd";
+import { Checkbox, Switch } from "antd";
 import { SettingsIcon } from "../../../CIconGenerate/Icons/custom";
 import { useEffect, useState } from "react";
 import Closer from "../../../../UI/Closer";
 import { useWebsiteStore } from "../../../../../store/website";
+import {
+  DeleteFilled,
+  EditFilled,
+  EyeOutlined,
+} from "@ant-design/icons";
 
 interface Props {
   columns: any;
@@ -36,7 +41,10 @@ export const ColumnSelection = ({ columns, tableName = "" }: Props) => {
     if (details?.[tableName]?.columns?.length) {
       setList(details[tableName].columns);
     } else {
-      setList(columns?.map((item: any) => item.dataIndex))
+      setList([
+        ...columns?.map((item: any) => item.dataIndex),
+        ...["view", "edit", "delete"],
+      ]);
     }
   }, [details[tableName]]);
 
@@ -50,17 +58,39 @@ export const ColumnSelection = ({ columns, tableName = "" }: Props) => {
         {visible && (
           <div className="absolute right-0 top-[30px] z-[99] bg-[var(--white)] rounded-[16px] px-16px border border-[var(--border)] shadow-lg">
             {columns?.map((item: any) => (
-              <div
-                key={item.dataIndex}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleSelection(item.dataIndex);
-                }}
-                className="py-8px"
-              >
-                <Checkbox checked={list.includes(item.dataIndex)}>
-                  {item.title}
-                </Checkbox>
+              <div key={item.dataIndex} className="py-8px">
+                <div
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleSelection(item.dataIndex);
+                  }}
+                >
+                  <Checkbox checked={list.includes(item.dataIndex)}>
+                    {item.title}
+                  </Checkbox>
+                </div>
+                {item.dataIndex === "setting" && (
+                  <div className="my-2 flex space-x-4">
+                    <Switch
+                      checkedChildren={<EyeOutlined />}
+                      onChange={() => handleSelection("view")}
+                      checked={list.includes("view")}
+                      className="bg-[var(--gray)]"
+                    />
+                    <Switch
+                      checkedChildren={<EditFilled />}
+                      onChange={() => handleSelection("edit")}
+                      checked={list.includes("edit")}
+                      className="bg-[var(--gray)]"
+                    />
+                    <Switch
+                      checkedChildren={<DeleteFilled />}
+                      onChange={() => handleSelection("delete")}
+                      className="bg-[var(--gray)]"
+                      checked={list.includes("delete")}
+                    />
+                  </div>
+                )}
               </div>
             ))}
           </div>

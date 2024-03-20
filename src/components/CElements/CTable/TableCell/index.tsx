@@ -6,7 +6,7 @@ interface Props {
   value: any;
   row: any;
   edit: any;
-  rowClick?: (val: any) => void;
+  rowClick?: any;
   setEdit: (val: any) => void;
 }
 
@@ -17,7 +17,7 @@ export const TableCell = ({
   row = {},
   column = {},
   value,
-  rowClick = () => {},
+  rowClick,
 }: Props) => {
   const currentValue = column?.render
     ? Array.isArray(column.dataIndex)
@@ -33,8 +33,9 @@ export const TableCell = ({
         row={row}
         edit={edit}
         index={index}
-        rowClick={rowClick}
+        column={column}
         setEdit={setEdit}
+        rowClick={rowClick}
       />
     );
   }
@@ -44,7 +45,12 @@ export const TableCell = ({
       {index === edit ? (
         <EditUI currentValue={currentValue} />
       ) : (
-        <div onClick={() => rowClick(row)}>{currentValue}</div>
+        <div
+          onClick={() => rowClick ? rowClick(row) : {}}
+          className={rowClick ? "cursor-pointer" : ""}
+        >
+          {currentValue}
+        </div>
       )}
     </>
   );

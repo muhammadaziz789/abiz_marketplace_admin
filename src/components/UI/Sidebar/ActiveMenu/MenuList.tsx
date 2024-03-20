@@ -1,13 +1,11 @@
-// import { RouteList } from "./RouteList";
-
 import { useCallback, useMemo, useState } from "react";
 import { useWebsiteStore } from "../../../../store/website";
 import { RouteList } from "./RouteList";
-import { MenuCollapse } from "../../../UI/Sidebar/Menu/Collapse";
+import { MenuCollapse } from "../Menu/Collapse";
 import usePageRouter from "../../../../hooks/usePageRouter";
-import { MenuItem } from "../../../UI/Sidebar/Menu/MenuItem";
+import { MenuItem } from "../Menu/MenuItem";
 import epmtyImage from "/images/no-data.png";
-import Closer from "../../../UI/Closer";
+import Closer from "../../Closer";
 import { Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 
@@ -24,7 +22,7 @@ export const ActiveMenuList = () => {
   }, []);
 
   return (
-    <div className="absolute left-32px top-4px z-[99] flex">
+    <div className="absolute top-[30px] z-[99] left-32px flex">
       <div className="border border-[var(--border)] shadow-lg bg-[var(--white)] rounded-[16px] min-w-[240px] overflow-hidden">
         {list?.length ? (
           <>
@@ -54,7 +52,7 @@ export const ActiveMenuList = () => {
           </>
         ) : (
           <div className="w-[100px] min-h-[110px] mx-auto">
-            <img src={epmtyImage} alt="img" /> 
+            <img src={epmtyImage} alt="img" />
           </div>
         )}
         {!routeOpen && (

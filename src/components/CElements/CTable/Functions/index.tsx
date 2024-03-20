@@ -44,11 +44,26 @@ export const TablePagination = () => {
 };
 
 export const AvailableColumns = () => {
-  const getAvailableColumns = (details: any, tableName: string, columns: any) => {
+  const getAvailableColumns = (
+    details: any,
+    tableName: string,
+    columns: any
+  ) => {
     const list = details?.[tableName]?.columns;
     let result: any = [];
     if (list?.length) {
       columns.map((item: any) => {
+        if (item.dataIndex === "setting") {
+          const obj = item;
+          obj.view = list.includes("view");
+          obj.edit = list.includes("edit");
+          obj.delete = list.includes("delete");
+
+          result.push(obj);
+
+          return;
+        }
+
         if (list.includes(item.dataIndex)) {
           result.push(item);
         }
