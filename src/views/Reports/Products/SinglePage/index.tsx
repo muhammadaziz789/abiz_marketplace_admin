@@ -8,10 +8,10 @@ import { HFInput } from "../../../../components/HFElements/HFInput";
 import { useParams } from "react-router-dom";
 import { BreadcrumbList } from "./Functions";
 
-export const UsersTableSinglePage = () => {
+export const ProductSinglePage = () => {
+  const { id } = useParams();
   const { setAlert } = useWebsiteStore();
   const formRef = useRef();
-  const { id } = useParams()
   const { list: breadcrumbList } = BreadcrumbList(id);
 
   const { control, handleSubmit } = useForm({
@@ -55,7 +55,6 @@ export const UsersTableSinglePage = () => {
               type="number"
               required={true}
             />
-          
           </div>
         </HFWrapper>
       </PageWrapper>

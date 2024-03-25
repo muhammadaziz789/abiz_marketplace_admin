@@ -1,6 +1,12 @@
 import { Button } from "antd";
+import { memo } from "react";
 
-export const ProductItem = () => {
+interface Props {
+  element: any;
+  handleItemClick: (val: any) => void
+}
+
+export const ProductItem: React.FC<Props> = memo(({ element, handleItemClick = () => {} }) => {
   return (
     <div className="bg-[var(--white)] rounded-[16px] overflow-hidden">
       <div className="h-[250px]">
@@ -17,8 +23,8 @@ export const ProductItem = () => {
           <span className="text-[var(--primary)]">$120.00</span>
         </div>
 
-        <Button className="bg-[var(--lightGray)] mt-5">Edit Product</Button>
+        <Button onClick={() => handleItemClick(element)} className="bg-[var(--lightGray)] mt-5">Edit Product</Button>
       </div>
     </div>
   );
-};
+})

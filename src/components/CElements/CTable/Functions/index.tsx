@@ -3,7 +3,7 @@ import { useWebsiteStore } from "../../../../store/website";
 import usePageRouter from "../../../../hooks/usePageRouter";
 import { useLocation } from "react-router-dom";
 
-export const TablePagination = () => {
+export const TablePagination = (columns: any) => {
   const { tableDetails, setTableDetails } = useWebsiteStore();
   const { navigateQuery, getQueries } = usePageRouter();
   const query = getQueries();
@@ -30,14 +30,37 @@ export const TablePagination = () => {
 
   useEffect(() => {
     const obj = details[tableName] || {};
+
     if (obj?.pageSize) {
       navigateQuery({ pageSize: obj.pageSize, current: obj.current });
+    } else {
+      navigateQuery({ pageSize: 10, current: 1 });
+
+      const arr = columns?.map((item: any, index: number) => {
+        const obj: any = {};
+        obj.order = index;
+        obj.active = true;
+        obj.title = item.title;
+        obj.dataIndex = item.dataIndex;
+        if (item.dataIndex === "setting") {
+          obj.actions = ["view", "edit", "delete"];
+        }
+
+        return obj;
+      });
+
+      const obj: any = {
+        ...details,
+        [tableName]: { pageSize: 10, current: 1, columns: arr },
+      };
+
+      setTableDetails(obj);
     }
   }, [details[tableName]]);
 
   return {
-    current: details[tableName]?.current || query?.current || 1,
-    pageSize: details[tableName]?.pageSize || query?.pageSize || 10,
+    current: details[tableName]?.current || query?.current,
+    pageSize: details[tableName]?.pageSize || query?.pageSize,
     pageSizeOptions,
     handlePageSizeChange,
   };
@@ -50,22 +73,17 @@ export const AvailableColumns = () => {
     columns: any
   ) => {
     const list = details?.[tableName]?.columns;
+
     let result: any = [];
     if (list?.length) {
-      columns.map((item: any) => {
-        if (item.dataIndex === "setting") {
-          const obj = item;
-          obj.view = list.includes("view");
-          obj.edit = list.includes("edit");
-          obj.delete = list.includes("delete");
+      list.forEach((item: any) => {
+        const obj: any = item;
 
-          result.push(obj);
-
-          return;
-        }
-
-        if (list.includes(item.dataIndex)) {
-          result.push(item);
+        if (obj?.active) {
+          const newObj = columns.find(
+            (item: any) => item.dataIndex === obj.dataIndex
+          );
+          return result.push({ ...obj, ...newObj });
         }
       });
     } else {

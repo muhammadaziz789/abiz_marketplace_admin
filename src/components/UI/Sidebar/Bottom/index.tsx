@@ -1,6 +1,7 @@
-import { memo } from "react";
+import { memo, useCallback, useState } from "react";
 import usePageRouter from "../../../../hooks/usePageRouter";
 import { CIconGenerate } from "../../../CElements/CIconGenerate";
+import { LogoutModal } from "./Logout";
 
 const list: any = [
   {
@@ -27,13 +28,19 @@ interface Props {
 
 export const SidebarBottom = memo(({ collapsed = true }: Props) => {
   const { navigateTo } = usePageRouter();
+  const [modalOpen, setModalOpen] = useState(false)
 
   const navigate = (link: string) => {
     if (link === "logout") {
+      setModalOpen(true)
       return;
     }
     navigateTo(link);
   };
+
+  const closeModal = useCallback(() => {
+    setModalOpen(false)
+  }, [])
 
   return (
     <div className="border-t border-[var(--border)]">
@@ -68,6 +75,8 @@ export const SidebarBottom = memo(({ collapsed = true }: Props) => {
           )}
         </div>
       ))}
+
+      <LogoutModal open={modalOpen} closeModal={closeModal} />
     </div>
   );
 });

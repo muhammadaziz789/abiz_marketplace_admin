@@ -22,7 +22,7 @@ const CTable = ({
   rowClick,
 }: Props) => {
   const { current, pageSize, pageSizeOptions, handlePageSizeChange } =
-    TablePagination();
+    TablePagination(columns);
 
   const location = useLocation();
   const { tableDetails } = useWebsiteStore();
@@ -35,7 +35,7 @@ const CTable = ({
   const availableColumns = useMemo(() => {
     return getAvailableColumns(details, tableName, columns);
   }, [details[tableName], columns]);
-
+  
   const renderedElements = useMemo(() => {
     return availableColumns?.map((column: any) => {
       return {
@@ -61,11 +61,7 @@ const CTable = ({
 
   return (
     <div id="ctable">
-      <TableHeader
-        columns={columns}
-        tableName={tableName}
-        title={headerTitle}
-      />
+      <TableHeader tableName={tableName} title={headerTitle} />
       <div className="border border-[var(--border)] rounded-[16px] overflow-hidden relative">
         <Table
           columns={renderedElements}

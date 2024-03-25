@@ -12,6 +12,7 @@ export default {
         small: "540px",
       },
       spacing: {
+        "0px": "0px",
         px: "1px",
         "2px": "2px",
         "4px": "4px",

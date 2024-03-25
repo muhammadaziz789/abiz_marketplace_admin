@@ -22,7 +22,7 @@ export const SettingCell = ({
   
   return (
     <div className="space-x-3">
-      {column.view && (
+      {column.actions?.includes("view") && (
         <Button onClick={() => rowClick(row)} icon={<EyeOutlined />}></Button>
       )}
       {edit === index ? (
@@ -31,13 +31,13 @@ export const SettingCell = ({
           onClick={() => setEdit(null)}
           icon={<SaveOutlined />}
         ></Button>
-      ) : column.edit ? (
+      ) : column.actions?.includes("edit") ? (
         <Button onClick={() => setEdit(index)} icon={<EditOutlined />}></Button>
       ) : (
         ""
       )}
 
-      {column.delete && <DeleteUI />}
+      {column.actions?.includes("delete") && <DeleteUI />}
     </div>
   );
 };

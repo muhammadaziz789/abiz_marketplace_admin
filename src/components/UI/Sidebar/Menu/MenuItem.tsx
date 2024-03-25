@@ -21,7 +21,7 @@ export const MenuItem = ({
         backgroundColor: checkpath(element.path) ? "var(--primary)" : "",
       }}
     >
-      {element.icon && (
+      {element.icon ? (
         <div
           className={`${
             open ? "mr-16px" : "flex justify-center w-full"
@@ -32,6 +32,15 @@ export const MenuItem = ({
             icon={element.icon}
           />
         </div>
+      ) : (
+        <p
+          className="text-[var(--black)] text-sm"
+          style={{
+            color: checkpath(element.path) ? "white" : "var(--black)",
+          }}
+        >
+          {element?.title}
+        </p>
       )}
 
       {open ? (

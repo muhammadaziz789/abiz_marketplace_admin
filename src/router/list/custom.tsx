@@ -1,25 +1,28 @@
+import ProfilePage from "../../views/Profile";
+import SettingsPage from "../../views/Settings";
+
 export const customList = [
   {
-    parent: '',
+    parent: "",
     title: "test",
     path: "test",
-    icon: '',
+    icon: "",
     sidebar: true,
     element: "Test",
   },
   {
-    parent: '',
+    parent: "",
     title: "profile",
     path: "profile",
     sidebar: false,
-    element: "Profile",
+    element: <ProfilePage />,
   },
   {
-    parent: '',
+    parent: "",
     title: "settings",
     path: "settings",
-    icon: 'settings',
+    icon: "settings",
     sidebar: false,
-    element: "Settings",
+    element: <SettingsPage />,
   },
 ];

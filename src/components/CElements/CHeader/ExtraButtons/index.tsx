@@ -29,11 +29,11 @@ export const ExtraButtons = ({
       formRef.current.submitForm();
     }
 
-    extraButtonsClick("save");
+    extraButtonsClick(type);
   };
 
   return (
-    <div className="flex space-x-16px">
+    <div className="flex space-x-8px">
       <Button
         onClick={() => handleClick("save")}
         className="save"
